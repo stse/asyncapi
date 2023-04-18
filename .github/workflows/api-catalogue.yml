@@ -21,12 +21,16 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-jobs:
-  build:
+jobs:          
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v3
       - name: Create folder
         run: |
           mkdir -p build/doc
@@ -37,17 +41,6 @@ jobs:
           filepath: asyncapi.yml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
           output: build/doc
-          
-  # Single deploy job since we're just deploying
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
