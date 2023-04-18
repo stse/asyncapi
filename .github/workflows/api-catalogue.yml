@@ -38,7 +38,7 @@ jobs:
         uses: docker://asyncapi/github-action-for-generator:latest
         with:
           template: '@asyncapi/html-template@latest'  #In case of template from npm, because of @ it must be in quotes
-          filepath: asyncapi.yml
+          filepath: streetlight.asyncapi.yml
           parameters: baseHref=/asyncapi/ sidebarOrganization=byTags #space separated list of key/values
           output: build/doc/html
       - name: Setup Pages
