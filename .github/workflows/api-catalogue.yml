@@ -33,7 +33,7 @@ jobs:
           template: '@asyncapi/html-template@latest'  #In case of template from npm, because of @ it must be in quotes
           filepath: asyncapi.yml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
-          output: build/doc
+          output: /build/doc
           
   # Single deploy job since we're just deploying
   deploy:
