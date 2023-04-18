@@ -39,7 +39,7 @@ jobs:
         with:
           template: '@asyncapi/html-template@latest'  #In case of template from npm, because of @ it must be in quotes
           filepath: streetlight.asyncapi.yml
-          parameters: baseHref=/asyncapi/ sidebarOrganization=byTags #space separated list of key/values
+          parameters: baseHref=/asyncapi/streetlight/ sidebarOrganization=byTags #space separated list of key/values
           output: build/doc/html/streetlight
       - name: Setup Pages
         uses: actions/configure-pages@v3
