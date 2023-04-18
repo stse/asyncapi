@@ -39,7 +39,6 @@ jobs:
         with:
           template: '@asyncapi/markdown-template@latest'  #In case of template from npm, because of @ it must be in quotes
           filepath: asyncapi.yml
-          parameters: baseHref=/asyncapi/ sidebarOrganization=byTags #space separated list of key/values
           output: build/doc/md
       - name: Create folder
         run: |
