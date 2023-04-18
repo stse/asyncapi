@@ -29,14 +29,14 @@ jobs:
         uses: actions/checkout@v3.5.2
       - name: Create folder
         run: |
-          mkdir -p /build/doc
+          mkdir -p build/doc
       - name: Generating HTML from my AsyncAPI document
         uses: docker://asyncapi/github-action-for-generator:latest
         with:
           template: '@asyncapi/html-template@latest'  #In case of template from npm, because of @ it must be in quotes
           filepath: asyncapi.yml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
-          output: /build/doc
+          output: build/doc
           
   # Single deploy job since we're just deploying
   deploy:
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '/build/doc'
+          path: 'build/doc'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
